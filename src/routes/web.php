@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/weight_logs',[AdminController::class,'index']);
+Route::get('/weight_logs/{weightLogId}/update',[AdminController::class,'update']);
+Route::get('/weight_logs/goal_setting',[AdminController::class,'goal']);
 Route::get('/', function () {
     return view('welcome');
 });
