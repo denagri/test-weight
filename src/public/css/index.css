@@ -1,0 +1,92 @@
+body{
+    background-color: #eeeeee;
+}
+.header-box{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    border-bottom: solid 1px #eeeeee;
+    background-color: white;
+    height: 45px;
+    align-content: center;
+}
+p{
+    color: #ec87ef;
+    font-family: serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 0;
+    width: 25%;
+    letter-spacing: 0.3em;   
+}
+.header-btn-box{
+    display: flex;
+    align-items: center;
+}
+button, input {
+  box-sizing: border-box;
+}
+.header-setting-btn{
+    border: solid 1px #eeeeee;
+    background-color: #eeeeee;
+    border-radius: 3px;
+    margin: 5px 5px;
+    padding: 3px;
+}
+.header-logout-btn{
+    border: solid 1px #eeeeee;
+    background-color: #eeeeee;
+    border-radius: 3px;
+    margin: 5px 5px;
+    padding: 3px;
+}
+main{
+    width: 70%;
+    margin: 0 auto;
+}
+.main-box{
+    margin: 50px 0px;
+    border: solid 1px #eeeeee;
+    background-color: white;
+    /* height: 200px; */
+}
+.contents-box{
+    margin: 10px;
+}
+h1{}
+.date-data,.weight-data,.cal-data,.time-data,.content-data{
+    width: 100%;
+}
+.weight-data-input,.cal-data-input{
+    width: 96%;
+}
+.button-box{
+    display: flex;  
+    align-items: center;
+}
+.button-nondelete{
+    display: flex;
+    margin: 0 auto;
+}
+.return-btn{
+    border: solid 1px #919191;
+    background-color: #919191;
+    color: white;
+    border-radius: 3px;
+    margin: 10px;
+    height: 50px;
+    width: 180px;
+}
+.update-btn{
+    background: linear-gradient(90deg,#a3a7e2, #fdabd9);
+    margin: 10px;
+    border-radius: 3px;
+    color: white;
+    border: none;
+    height: 50px;
+    width: 180px;
+}
+.delete-btn{
+    margin-left: auto;
+    color: red;
+}

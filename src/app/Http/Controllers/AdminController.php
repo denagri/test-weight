@@ -10,9 +10,9 @@ class AdminController extends Controller
     {
         return view('admin');
     }
-    public function  update()
+    public function  detail()
     {
-        return view('update');
+        return view('index');
     }
     public function goal()
     {
