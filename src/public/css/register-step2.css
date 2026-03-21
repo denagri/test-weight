@@ -1,80 +1,57 @@
 body{
-    background-color: #eeeeee;
+    background:linear-gradient(#fedbd7, #d1d4f7);
+    width: 100%;
+    height: 100%;
 }
-.header-box{
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-    border-bottom: solid 1px #eeeeee;
+.first-box{
+    width: 40%;
+    margin: 80px auto;
     background-color: white;
-    height: 45px;
-    align-content: center;
+    border-radius: 3px;
+    border: solid 1px white;
+    height: 50%;
+
 }
-p{
+.text-box{
+    width: 45%;
+    margin: 20px auto;
+}
+h1{
     color: #ec87ef;
     font-family: serif;
     font-weight: bold;
-    font-size: 30px;
-    margin-top: 0;
-    width: 25%;
-    letter-spacing: 0.3em;   
+    text-align-last: justify;
+    display:block;
+    width: 100%;
+    text-justify: inter-character;
+    font-size: 40px;
 }
-.header-btn-box{
-    display: flex;
-    align-items: center;
+h2{
+    margin: 10px 0;
+    text-align-last: justify;
+    font-family: serif;
 }
-button, input {
-  box-sizing: border-box;
+h3{
+    margin-bottom: 10px;
+    text-align-last: justify;
+    font-family: serif;
 }
-.header-setting-btn{
-    border: solid 1px #eeeeee;
-    background-color: #eeeeee;
-    border-radius: 3px;
-    margin: 5px 5px;
-    padding: 3px;
+.data-box{
+    width: 100%;
+    margin: 10px;
 }
-.header-logout-btn{
-    border: solid 1px #eeeeee;
-    background-color: #eeeeee;
-    border-radius: 3px;
-    margin: 5px 5px;
-    padding: 3px;
-}
-main{
-    width: 30%;
-    margin: 0 auto;
-}
-.main-box{
-    margin: 180px 0;
-    border: solid 1px #eeeeee;
-    background-color: white;
-    height: 200px;
-}
-h1{
-    text-align: center;
-}
-.goal-data{
-    width: 350px;
-    margin: 10px auto;
+.input-text{}
+.input-box{
+    width: 100%;
 }
 input{
-    width: 330px;
+    width:93%;
 }
-.button-box{
-    display: flex;
+.logout-form{
     margin: 0 auto;
-    justify-content: space-between;
+    width: 40%;
 }
-.return-btn{
-    border: solid 1px #919191;
-    background-color: #919191;
-    color: white;
-    border-radius: 3px;
-    margin: 10px;
-    height: 50px;
-    width: 180px;
-}
-.update-btn{
+.create-btn{
     background: linear-gradient(90deg,#a3a7e2, #fdabd9);
     margin: 10px;
     border-radius: 3px;

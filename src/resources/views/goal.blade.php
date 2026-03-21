@@ -13,7 +13,7 @@
         <div class="header-box">
             <p>PiGLy</p>
             <div class="header-btn-box">
-                <button type="button" class="header-setting-btn" onclick="location.href='/goal'">
+                <button type="button" class="header-setting-btn" onclick="location.href='{{ route('weight.goal.setting') }}'">
                     <img src="{{ asset('image/setting.svg') }}" alt="歯車" width=20px height=20px>目標体重設定
                 </button>
                 <form class="logout-form" action="/logout" method="post" >
@@ -26,19 +26,21 @@
         </div>
     </header>
     <main>
-        <div class="main-box">
+        <form class="main-box" action="{{ route('weight.goal') }}" method="post">
+            @csrf
+            @method('put')
             <h1>目標体重設定</h1>
             <div class="goal-data">
-              <input type="text">kg
+              <input type="number" step="0.1" name="target_weight" value="{{Auth::user()->weightTarget->target_weight ??'' }}">kg
             </div>
             <div class="button-box">
-                <button type="button" class="return-btn" onclick="location.href='/admin'">戻る</button>
-                <form class="logout-form" action="/logout" method="post" >
-                @csrf
+                <a href="{{ route('home') }}" class="return-btn" style="text-decoration: none; display: inline-flex; align-items: center;">戻る
+                </a>
+                <div class="logout-form">
                     <button type="submit" class="update-btn">更新</button>
-                </form>
+                </div>
             </div>
-        </div>
+        </form>
     </main>
 </body>
 </html>

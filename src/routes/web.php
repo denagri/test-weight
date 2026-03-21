@@ -28,8 +28,11 @@ Route::middleware('guest')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('/weight_logs',[AdminController::class,'index'])
     ->name('home');
+    Route::get('/weight_logs/goal_setting',[AdminController::class,'setting'])
+    ->name('weight.goal.setting');
+    Route::put('/weight_logs/goal_setting',[AdminController::class,'update'])
+    ->name('weight.goal');
     Route::get('/weight_logs/{weightLogId}',[AdminController::class,'detail']);
-    Route::get('/weight_logs/goal_setting',[AdminController::class,'goal']);
 });
     
 

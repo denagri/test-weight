@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Actions\Fortify\CreateNewUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\user;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -33,6 +35,6 @@ class AuthController extends Controller
         Session::forget('register_data');
         Auth::login($user);
 
-        return redirect('/home');
+        return redirect('home');
     }
 }

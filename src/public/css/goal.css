@@ -33,9 +33,6 @@ button, input {
     margin: 5px 5px;
     padding: 3px;
 }
-a{
-    color: black;
-}
 .header-logout-btn{
     border: solid 1px #eeeeee;
     background-color: #eeeeee;
@@ -43,67 +40,49 @@ a{
     margin: 5px 5px;
     padding: 3px;
 }
-.main-box{
-    width: 70%;
+main{
+    width: 30%;
     margin: 0 auto;
 }
-.title-data-box{
+.main-box{
+    margin: 180px 0;
     border: solid 1px #eeeeee;
     background-color: white;
+    height: 200px;
+}
+h1{
+    text-align: center;
+}
+.goal-data{
+    width: 350px;
+    margin: 10px auto;
+}
+input{
+    width: 330px;
+}
+.button-box{
     display: flex;
-    margin: 20px 0;
+    margin: 0 auto;
     justify-content: space-between;
 }
-.goal-weight{
-    margin: 20px;
-}
-.rest-weight{
-    margin: 20px;
-}
-.latest-weight{
-    margin: 20px;
-}
-.title-data-ttl{
-    font-size: 20px;
-}
-.title-data-record{
-    font-size: 50px;
-}
-.record-data-box{
-    border: solid 1px #eeeeee;
-    background-color: white;
-}
-.record-data-header{
-    display: flex;    
-    justify-content: space-between;
-}
-.search-box{
-    display: flex;
-}
-.search-btn{
+.return-btn{
     border: solid 1px #919191;
     background-color: #919191;
     color: white;
     border-radius: 3px;
-    margin: 5px;
+    margin: 10px 5px;
+    height: 50px;
+    width: 180px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; 
 }
-.add-btn{
+.update-btn{
     background: linear-gradient(90deg,#a3a7e2, #fdabd9);
-    margin: 5px;
+    margin: 10px 5px;
     border-radius: 3px;
     color: white;
-}
-.record-data-main{
-    width: 95%;
-    margin: 10px;
-}
-tr{
-    border-bottom: solid 1px #919191;
-}
-th{
-    height: 10%;
-}
-td{
-    text-align: center;
-    height: 8%;
+    border: none;
+    height: 50px;
+    width: 180px;
 }
