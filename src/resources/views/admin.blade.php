@@ -55,12 +55,15 @@
             </div>
             <div class="record-data-box">
                 <div class="record-data-header">
-                    <form class="search-box">
-                        <!-- 〇〇～〇〇のやり方 -->
-                        <input type="text"> 
-                        <div class="search-btn">検索</div>
-                    </form>
-                    <!-- モーダル表示 -->
+                    <form action="{{ route('search') }}" method="GET" class="search-box">
+                        <input class="date-data" type="date" name="start_date" value="{{ request('start_date') }}">
+                        <span>〜</span>
+                        <input class="date-data" type="date" name="end_date" value="{{ request('end_date') }}">
+                        <button type="submit" class="search-btn">検索</button>
+                        @if(request('start_date')||request('end_date'))
+                        <a href="{{ route('home') }}" class="reset-btn">リセット</a>
+                        @endif
+                    </form>    
                     <div class="add-btn">
                         <button type="button" class="openBtn">データ追加</button>
                         
@@ -75,6 +78,11 @@
                                             <div class="add-required">必須</div>
                                         </div>
                                         <input type="date" name="date" value="{{ old('date') }}">
+                                        <div class="form-error">
+                                            @error('date')
+                                            <div style="color:red;">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="add-box">
                                         <div class="add-title-box">
@@ -83,6 +91,11 @@
                                         </div>
                                         <div class="weight-box">
                                             <input type="text" name="weight" value="{{ old('weight') }}">kg
+                                            <div class="form-error">
+                                                @error('weight')
+                                                <div style="color:red;">{{ $message }}</div>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="add-box">
@@ -92,6 +105,11 @@
                                         </div>
                                         <div class="calories-box">
                                             <input type="text" name="calories" value="{{ old('calories') }}">cal
+                                            <div class="form-error">
+                                                @error('calories')
+                                                <div style="color:red;">{{ $message }}</div>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="add-box">
@@ -100,12 +118,22 @@
                                             <div class="add-required">必須</div>
                                         </div>
                                         <input type="text" name="exercise_time" value="{{ old('exercise_time') }}">
+                                        <div class="form-error">
+                                            @error('exercise_time')
+                                            <div style="color:red;">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
                                     <div class="add-box">
                                         <div class="add-title-box">
                                             <div class="add-title">運動内容</div>
                                         </div>
                                         <textarea name="exercise_content" cols="30" rows="3"></textarea>
+                                        <div class="form-error">
+                                            @error('exercise_content')
+                                            <div style="color:red;">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -130,10 +158,9 @@
                     <tr>
                         <td>{{$weightLog->date->format('Y/m/d')}}</td>
                         <td>{{$weightLog->weight}}kg</td>
-                        <td>{{$weightLog->calories}}</td>
-                        <td>{{$weightLog->exercise_time}}</td>
+                        <td>{{$weightLog->calories}}cal</td>
+                        <td>{{$weightLog->exercise_time }}</td>
                         <td>
-                            <!-- 鉛筆マークでindex.blade.phpへ移動 -->
                             <a href="{{ route('weight.detail',['weightLogId' =>$weightLog->id]) }}" class="pencil-btn">
                                 <img src="{{ asset('image/pencil.svg') }}" alt="鉛筆" width=20px height=20px>
                             </a>
@@ -152,13 +179,22 @@
   const closeBtns = document.getElementsByClassName('closeBtn');
 
 for (let i = 0; i < modals.length; i++) {
-    openBtns[i].addEventListener('click', () => {
-    modals[i].showModal();
-  });
-  closeBtns[i].addEventListener('click', () => {
-    modals[i].close();
-  });
-  }
+        if (openBtns[i]) {
+            openBtns[i].onclick = function() {
+                modals[i].showModal();
+            };
+        }
+        if (closeBtns[i]) {
+            closeBtns[i].onclick = function() {
+                modals[i].close();
+            };
+        }
+    }
+@if($errors->any())
+    if(modals.length>0){   
+    modals[0].showModal();
+    }
+@endif
 </script>
 
 </body>

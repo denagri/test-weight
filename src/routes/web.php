@@ -28,6 +28,8 @@ Route::middleware('guest')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('/weight_logs',[AdminController::class,'index'])
     ->name('home');
+    Route::get('/weight_logs/search',[AdminController::class,'search'])
+    ->name('search');
     Route::post('/weight_logs/store',[AdminController::class,'store'])
     ->name('weight.store');
     Route::get('/weight_logs/goal_setting',[AdminController::class,'setting'])

@@ -76,20 +76,34 @@ a{
 .record-data-header{
     display: flex;    
     justify-content: space-between;
+    margin: 15px;
 }
 .search-box{
     display: flex;
+    width: 70%;
+}
+.date-data{
+    height: 40px;
+    width: 30%;
 }
 .search-btn{
     border: solid 1px #919191;
     background-color: #919191;
     color: white;
     border-radius: 3px;
-    margin: 5px;
+    padding: 7px 30px;
+    margin-left: 5px;
+}
+.reset-btn{
+    border: solid 1px #919191;
+    color: #919191;
+    border-radius: 3px;
+    padding: 7px 20px;
+    margin-left: 5px;
+    text-decoration: none;
 }
 .openBtn{
     background: linear-gradient(90deg,#a3a7e2, #fdabd9);
-    margin: 25px;
     border-radius: 3px;
     color: white;
     border: solid 1px white;
@@ -167,4 +181,17 @@ td{
 .pencil-btn{
     border: none;
     background-color: white;
+}
+.pagination{
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+}
+.pagination a{
+    text-decoration: none;
+    color: #8b7969;
+}
+.active{
+    color: #fff;
+    background-color: #8b7969;
 }

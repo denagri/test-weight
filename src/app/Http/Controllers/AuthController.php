@@ -37,11 +37,11 @@ class AuthController extends Controller
         $user = $creator->create($input);
         WeightTarget::create([
             'user_id' => $user->id,
-            'target_weight' => $request->goal_weight,
+            'target_weight' => $request->goal,
         ]);
         WeightLog::create([
             'user_id' => $user->id,
-            'weight' => $request->weight,
+            'weight' => $request->current,
             'date' => Carbon::today(),
             'calories' => 0,
             'exercise_time' => '00:00',
@@ -49,6 +49,6 @@ class AuthController extends Controller
         Session::forget('register_data');
         Auth::login($user);
 
-        return redirect('home');
+        return redirect()->route('home');
     }
 }
