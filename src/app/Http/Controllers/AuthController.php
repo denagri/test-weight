@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\user;
 use Illuminate\Support\Facades\Auth;
+use App\Models\WeightLog;
+use App\Models\WeightTarget;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
@@ -32,6 +35,17 @@ class AuthController extends Controller
     {
         $input=array_merge(Session::get('register_data',[]),$request->all());
         $user = $creator->create($input);
+        WeightTarget::create([
+            'user_id' => $user->id,
+            'target_weight' => $request->goal_weight,
+        ]);
+        WeightLog::create([
+            'user_id' => $user->id,
+            'weight' => $request->weight,
+            'date' => Carbon::today(),
+            'calories' => 0,
+            'exercise_time' => '00:00',
+    ]);
         Session::forget('register_data');
         Auth::login($user);
 

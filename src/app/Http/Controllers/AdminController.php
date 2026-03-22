@@ -5,33 +5,56 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\WeightTarget;
 use App\Models\WeightLog;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function index()
     {    
-        $weightTarget = WeightTarget::latest()->first(); 
-        $latestWeight = WeightLog::latest()->first();
-        $weightLogs = WeightLog::select('date','weight','calories','exercise_time')->paginate(8);
+        $userId=Auth::id();
+        $weightTarget = WeightTarget::where('user_id',$userId)->latest()->first(); 
+        $latestWeight = WeightLog::where('user_id',$userId)->orderBy('date','desc')->first();
+        $weightLogs = WeightLog::where('user_id',$userId)->orderBy('date','desc')->paginate(8);
         return view('admin',compact('weightTarget','latestWeight','weightLogs'));
     }
-    public function  detail()
+    public function store(Request $request)
     {
-        return view('index');
+        $form=$request->all();
+        $form['user_id']=Auth::id();
+        WeightLog::create($form);
+        return redirect()->route('home');
+    }
+    public function updateLog(Request $request,$weightLogId)
+    {
+        $form=$request->all();
+        $weightLog=WeightLog::findOrFail($weightLogId);
+        $weightLog->update($form);
+        return redirect()->route('home');
+    }
+    public function detail($weightLogId)
+    {
+        $weightLog=WeightLog::findOrFail($weightLogId);
+        return view('index',compact('weightLog'));
     }
     public function setting()
     {
         return view('goal');
     }
-    public function update(Request $request)
+    public function updateGoal(Request $request)
     {
         $request->validate([
-            'target_weight' =>'required','numeric',
+            'target_weight' =>['required','numeric'],
         ]);    
-        \App\Models\WeightTarget::updateOrCreate(
-        ['user_id' => auth()->id()],
-        ['target_weight' => $request->target_weight]
+        WeightTarget::updateOrCreate(
+            ['user_id' => Auth::id()],
+            ['target_weight' => $request->target_weight]
         );   
+        return redirect()->route('home');
+    }
+    public function destroy($weightLogId)
+    {
+        $weightLog=WeightLog::findOrFail($weightLogId);
+        $weightLog->delete();
         return redirect()->route('home');
     }
 }

@@ -28,11 +28,18 @@ Route::middleware('guest')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('/weight_logs',[AdminController::class,'index'])
     ->name('home');
+    Route::post('/weight_logs/store',[AdminController::class,'store'])
+    ->name('weight.store');
     Route::get('/weight_logs/goal_setting',[AdminController::class,'setting'])
     ->name('weight.goal.setting');
-    Route::put('/weight_logs/goal_setting',[AdminController::class,'update'])
+    Route::put('/weight_logs/goal_setting',[AdminController::class,'updateGoal'])
     ->name('weight.goal');
-    Route::get('/weight_logs/{weightLogId}',[AdminController::class,'detail']);
+    Route::patch('/weight_logs/{weightLogId}/update',[AdminController::class,'updateLog'])
+    ->name('weight.update');
+    Route::get('/weight_logs/{weightLogId}',[AdminController::class,'detail'])
+    ->name('weight.detail');
+    Route::get('/weight_logs/{weightLogId}/delete',[AdminController::class,'destroy'])
+    ->name('weight.destroy');
 });
     
 

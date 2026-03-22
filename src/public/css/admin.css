@@ -87,12 +87,69 @@ a{
     border-radius: 3px;
     margin: 5px;
 }
-.add-btn{
+.openBtn{
     background: linear-gradient(90deg,#a3a7e2, #fdabd9);
-    margin: 5px;
+    margin: 25px;
     border-radius: 3px;
     color: white;
+    border: solid 1px white;
+    padding: 7px 15px;
 }
+.modal{
+    width: 60%;
+    background-color: white;
+    border-radius:  3px;
+    border: solid 1px white;
+    padding: 10px;
+}
+.modal-header{
+    font-size: 40px;
+    font-weight: bold;
+}
+.modal-main{}
+.add-box{
+    margin: 10px 0; 
+}
+.add-title-box{
+    display: flex;
+    margin: 5px 0;
+}
+.add-title{
+    margin-right: 5px;
+}
+.add-required{
+    background-color: red;
+    color: white;
+    border: solid 1px red;
+    border-radius: 3px;
+}
+input,textarea{
+    width: 95%;
+}
+.modal-footer{
+    margin: 0 auto;
+    width: 30%;
+}
+.footer-btn{
+    display: flex;
+}
+.closeBtn{
+    border: solid 1px #919191;
+    background-color: #919191;
+    color: white;
+    border-radius: 3px;
+    margin: 10px;
+    padding: 10px 30px;
+}
+.register-btn{
+    background: linear-gradient(90deg,#a3a7e2, #fdabd9);
+    margin: 10px;
+    border-radius: 3px;
+    color: white;
+    border: solid 1px white;
+    padding: 10px 30px;
+}
+
 .record-data-main{
     width: 95%;
     margin: 10px;
@@ -106,4 +163,8 @@ th{
 td{
     text-align: center;
     height: 8%;
+}
+.pencil-btn{
+    border: none;
+    background-color: white;
 }

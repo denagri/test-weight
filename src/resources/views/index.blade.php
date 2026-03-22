@@ -13,7 +13,7 @@
         <div class="header-box">
             <p>PiGLy</p>
             <div class="header-btn-box">
-                <button type="button" class="header-setting-btn" onclick="location.href='/goal'">
+                <button type="button" class="header-setting-btn" onclick="location.href='{{ route('weight.goal.setting') }}'">
                     <img src="{{ asset('image/setting.svg') }}" alt="歯車" width=20px height=20px>目標体重設定
                 </button>
                 <form class="logout-form" action="/logout" method="post" >
@@ -29,43 +29,46 @@
         <div class="main-box">
             <div class="contents-box">
                 <h1>Weight Log</h1>
-                <div class="current-data">
-                    <div class="data-box">
-                        <div class="data-title">日付</div>
-                        <input type="date" class="date-data">
-                    </div>
-                    <div class="data-box">
-                        <div class="data-title">体重</div>
-                        <div class="weight-data"><input type="text" class="weight-data-input" placeholder="50.0">kg
+                <form action="{{ route('weight.update',['weightLogId'=>$weightLog->id]) }}" method="post">
+                    @csrf
+                    @method('patch')
+                    <div class="current-data">
+                        <div class="data-box">
+                            <div class="data-title">日付</div>
+                            <input type="date" name="date" class="date-data" value="{{ $weightLog->date->format('Y-m-d') }}">
+                        </div>
+                        <div class="data-box">
+                            <div class="data-title">体重</div>
+                            <div class="weight-data">
+                                <input type="text" name="weight" class="weight-data-input" value="{{ $weightLog->weight}}">kg
+                            </div>
+                        </div>
+                        <div class="data-box">
+                            <div class="data-title">摂取カロリー</div>
+                            <div class="cal-data">
+                                <input type="text" name="calories" class="cal-data-input" value="{{ $weightLog->calories }}">cal
+                            </div>     
+                        </div>
+                        <div class="data-box">
+                            <div class="data-title">運動時間</div>
+                            <input type="text" name="exercise_time" class="time-data" value="{{ $weightLog->exercise_time }}">
+                        </div>
+                        <div class="data-box">
+                            <div class="data-title">運動内容</div>
+                            <textarea name="exercise_content" class="content-data" rows="5" cols="30">{{ $weightLog->exercise_content}}
+                            </textarea>
                         </div>
                     </div>
-                    <div class="data-box">
-                        <div class="data-title">摂取カロリー</div>
-                        <div class="cal-data"><input type="text" class="cal-data-input" placeholder="1200">cal
-                        </div>     
-                    </div>
-                    <div class="data-box">
-                        <div class="data-title">運動時間</div>
-                        <input type="text" class="time-data" placeholder="00:00">
-                    </div>
-                    <div class="data-box">
-                        <div class="data-title">運動内容</div>
-                        <textarea class="content-data" rows="5" cols="30" placeholder="運動内容を追加">
-                        </textarea>
-                    </div>
-                </div>
-                <div class="button-box">
-                    <div class="button-nondelete">
-                        <button type="button" class="return-btn" onclick="location.href='/admin'">戻る</button>
-                        <form class="update-form" action="/admin" method="post" >
-                        @csrf
+                    <div class="button-box">
+                        <div class="button-nondelete">
+                            <button type="button" class="return-btn" onclick="location.href='{{ route('home') }}'">戻る</button>
                             <button type="submit" class="update-btn">更新</button>
-                        </form>
+                        </div>
+                        <a href="{{ route('weight.destroy', ['weightLogId'=>$weightLog->id]) }}" class="detail_button-delete" >
+                            <img src="{{ asset('image/trashbox.svg') }}" alt="ごみ箱" width=20px height=20px>
+                        </a>
                     </div>
-                    <div class="button-delete" >
-                        <img src="{{ asset('image/trashbox.svg') }}" alt="ごみ箱" width=20px height=20px class="delete-btn">
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </main>
